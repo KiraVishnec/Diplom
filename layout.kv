@@ -1,0 +1,704 @@
+
+
+WindowManager:
+    Login:
+    Regi:
+    News:
+    Menu:
+    Searchprof:
+    Searchprofsucsess:
+    Chats:
+    Profile:
+  
+<Login>:
+    name: "login"
+    BoxLayout:
+        size_hint: None, None
+        size: 300, 400
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        elevation: 10
+        padding: 25
+        spacing: 25
+        orientation: 'vertical'
+        MDLabel:
+            id: welcome_label
+            text: "Добро пожаловать"
+            font_size: 40
+            halign: 'center'
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: 15
+        MDTextField:
+            id: user
+            hint_text: "Логин"
+            size_hint_x: None
+            width: 200
+            font_size: 18
+            pos_hint: {"center_x": 0.5}
+        Widget:
+            size_hint_y: None
+            height: 40
+        MDBoxLayout:
+            orientation: "horizontal"
+            padding: "24dp"   
+            MDTextField:
+                id: password
+                hint_text: "Пароль"
+                size_hint_x: None
+                width: 180
+                font_size: 18
+                pos_hint: {"center_x": 0.5}
+                password: True
+            MDIconButton:
+                icon: "eye-off"
+                    
+                on_release:
+                    app.hidenpass(root.ids.password)
+        MDRoundFlatButton:
+            text: "Войти"
+            font_size: 12
+            pos_hint: {"center_x": 0.5}
+            on_release: 
+                app.enter(root.ids.user.text, root.ids.password.text)
+        Widget:
+            size_hint_y: None
+            height: 10
+
+
+<Regi>:
+    name: "regi"
+    BoxLayout:
+        size_hint: None, None
+        size: 360, 640
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+        padding: 25
+
+        orientation: 'vertical'
+        MDLabel:
+            text: "Введите новый Логин"
+            font_size: 15
+            halign: 'center'
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        MDTextField:
+            id: login
+            hint_text: "Ввод"
+            size_hint_x: None
+            width: 200
+            font_size: 12
+            pos_hint: {"center_x": 0.5}
+        MDLabel:
+            text: "Введите новый Пароль"
+            font_size: 15
+            halign: 'center'
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        MDTextField:
+            id: passw1
+            hint_text: "Ввод"
+            size_hint_x: None
+            width: 200
+            font_size: 12
+            pos_hint: {"center_x": 0.5}
+            password: True
+        MDLabel:
+            text: "Повторите пароль"
+            font_size: 15
+            halign: 'center'
+            size_hint_y: None
+            height: self.texture_size[1]
+        MDTextField:
+            id: passw2
+            hint_text: "Ввод"
+            size_hint_x: None
+            width: 200
+            font_size: 12
+            pos_hint: {"center_x": 0.5}
+            password: True
+        MDLabel:
+            text: "Фамилия"
+            font_size: 15
+            halign: 'center'
+            size_hint_y: None
+            height: self.texture_size[1]
+        MDTextField:
+            id: name
+            hint_text: "Ввод"
+            size_hint_x: None
+            width: 200
+            font_size: 12
+            pos_hint: {"center_x": 0.5}
+        MDLabel:
+            text: "Имя"
+            font_size: 15
+            halign: 'center'
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        MDTextField:
+            id: nametwo
+            hint_text: "Ввод"
+            size_hint_x: None
+            width: 200
+            font_size: 12
+            pos_hint: {"center_x": 0.5}
+        MDLabel:
+            text: "Группа"
+            font_size: 15
+            halign: 'center'
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        MDTextField:
+            id: group
+            hint_text: "Ввод (А-01-1)"
+            size_hint_x: None
+            width: 200
+            font_size: 12
+            pos_hint: {"center_x": 0.5}
+        Widget:
+            size_hint_y: None
+            height: 30
+        MDRoundFlatButton:
+            text: "Готово"
+            font_size: 12
+            pos_hint: {"center_x": 0.5}
+            on_press: 
+                app.reg(root.ids.login.text, root.ids.passw1.text, root.ids.passw2.text, root.ids.name.text, root.ids.nametwo.text, root.ids.group.text, root.ids.ident.text)
+        Widget:
+            size_hint_y: None
+            height: 70
+        MDLabel:
+            id: ident
+            font_size: 1
+            halign: 'center'
+            size_hint_y: None
+            height: self.texture_size[1]
+
+
+
+
+
+
+
+<News>:
+    name: "news"
+    BoxLayout:
+        orientation: 'vertical'
+        MDBoxLayout:
+            pos_hint: {"top":1}
+            size_hint_y: None
+            height: "60dp"
+            spacing: "10dp"
+            padding: "12dp", 0, "12dp", 0
+            MDLabel:
+                text: "Новости"
+                font_style: "H5"
+                pos_hint: {"top": 1}
+                bold: True
+        MDBoxLayout:
+            size_hint_y: .6
+            pos_hint: {"center_y":.4}
+
+            ScrollView:
+                MDList:
+                    spacing: "10dp"
+                    ThreeLineListItem:
+                        text: "Подготовка школьников к ОГЭ"
+                        secondary_text: "Под эгидой фонда Андрея Мельниченко "
+                        tertiary_text: "Невинномысский химико-технологический колледж готовит "
+                        spacing: "5dp"
+                        bg_color: 1,1,1,1
+                    ThreeLineListItem:
+                        text: "День славянской письменности и культуры"
+                        secondary_text: "Ежегодно 24 мая Россия и страны "
+                        tertiary_text: "всего мира отмечают День славянской письменности и культуры."
+                        spacing: "5dp"
+                        bg_color: 1,1,1,1
+                    ThreeLineListItem:
+                        text: "Волонтерская акция «Терроризм – угроза обществу»"
+                        secondary_text: "Терроризм во всех его формах и "
+                        tertiary_text: "проявлениях представляет собой одну из самых серьёзных угроз миру и безопасности  "
+                        spacing: "5dp"
+                        bg_color: 1,1,1,1
+
+
+        MDBoxLayout:
+            pos_hint: {"bot":1}
+            size_hint_y: .1
+            height: "60dp"
+            spacing: "15dp"
+            padding: "60dp", 0, "12dp", 0
+            MDIconButton:
+                icon: "newspaper"
+                pos_hint: {"center_y": .5,"center_x": .2}
+                on_release: app.root.current = "news"
+                
+            MDIconButton:
+                icon: "menu"
+                size_hint: None, None
+                pos_hint: {"center_y": .5,"center_x": .4}
+                on_release: app.root.current = "menu"
+                
+            MDIconButton:
+                icon: "chat"
+                pos_hint: {"center_y": .5,"center_x": .6}
+                on_release: app.root.current = "chats"
+                    
+            MDIconButton:
+                icon: "account"
+                pos_hint: {"center_y": .5,"center_x": .8}
+                on_release: app.root.current = "profile"
+
+
+
+
+
+
+
+
+
+
+<Menu>:
+    name: "menu"
+    BoxLayout:
+        orientation: 'vertical'
+        MDBoxLayout:
+            pos_hint: {"top":1}
+            size_hint_y: None
+            height: "60dp"
+            spacing: "10dp"
+            padding: "12dp", 0, "12dp", 0
+            MDLabel:
+                text: "Сервисы"
+                font_style: "H5"
+                pos_hint: {"top": 1}
+                bold: True
+        MDBoxLayout:
+            GridLayout:
+                cols: 5
+                pos_hint: {"top":1}
+                size_hint_y: .100
+
+                spacing: "15dp"
+                padding: "30dp", "12dp", "12dp", 0
+                MDIconButton:
+                    icon: "ballot"
+                    icon_size: "64sp"
+                MDIconButton:
+                    icon: "account-search"
+                    size: "64dp", "64"
+                    icon_size: "64sp"
+                    size_hint: None, None
+                    on_release: app.root.current = "searchprof"
+
+                MDIconButton:
+                    icon: "atom"
+                    icon_size: "64sp"
+                    size_hint: None, None
+                    on_release: app.site()
+
+                MDIconButton:
+                    icon: "account-circle"
+                    icon_size: "64sp"
+                    size_hint: None, None
+
+
+
+
+        MDBoxLayout:
+            pos_hint: {"bot":1}
+            size_hint_y: .1
+            height: "60dp"
+            spacing: "15dp"
+            padding: "60dp", 0, "12dp", "28dp"
+            MDIconButton:
+                icon: "newspaper"
+                pos_hint: {"center_y": .5,"center_x": .2}
+                on_release: app.root.current = "news"
+                    
+            MDIconButton:
+                icon: "menu"
+                text: "Меню"
+                size_hint: None, None
+                pos_hint: {"center_y": .5,"center_x": .4}
+                on_release: app.root.current = "menu"
+                    
+            MDIconButton:
+                icon: "chat"
+                pos_hint: {"center_y": .5,"center_x": .6}
+                on_release: app.root.current = "chats"
+                        
+            MDIconButton:
+                icon: "account"
+                pos_hint: {"center_y": .5,"center_x": .8}
+                on_release: app.root.current = "profile"
+
+<Searchprof>:
+    name: "searchprof"
+    BoxLayout:
+        orientation: 'vertical'
+        MDBoxLayout:
+            pos_hint: {"top":1}
+            size_hint_y: None
+            height: "60dp"
+            spacing: "10dp"
+            padding: "12dp", 0, "12dp", "18dp"
+            MDLabel:
+                text: "Поиск"
+                font_style: "H5"
+                pos_hint: {"top": 1}
+                bold: True
+
+        MDBoxLayout:
+
+            size_hint_y: .05
+            padding: "10dp", "100dp", 0 , "10dp"
+            pos_hint: {"center_y":.84}
+
+            CustomTextInput:
+                id: poisk_name
+                hint_text: "Введите Имя"
+            MDIconButton:
+                icon: "magnify"
+                
+                on_release:
+                    app.poisk(root.ids.poisk_name.text)
+
+
+        ScrollView:
+            MDList:
+                id: searchuser
+
+
+        MDBoxLayout:
+            pos_hint: {"bot":1}
+            size_hint_y: .1
+            height: "60dp"
+            spacing: "15dp"
+            padding: "60dp", 0, "12dp", 0
+            MDIconButton:
+                icon: "newspaper"
+                pos_hint: {"center_y": .5,"center_x": .2}
+                on_release: app.root.current = "news"
+                        
+            MDIconButton:
+                icon: "menu"
+                size_hint: None, None
+                pos_hint: {"center_y": .5,"center_x": .4}
+                on_release: app.root.current = "menu"
+                        
+            MDIconButton:
+                icon: "chat"
+                pos_hint: {"center_y": .5,"center_x": .6}
+                on_release: app.root.current = "chats"
+                            
+            MDIconButton:
+                icon: "account"
+                pos_hint: {"center_y": .5,"center_x": .8}
+                on_release: app.root.current = "profile"
+
+
+<Searchprofsucsess>:
+    name: "searchprofsucsess"
+    BoxLayout:
+        orientation: 'vertical'
+        MDBoxLayout:
+            pos_hint: {"top":1}
+            size_hint_y: None
+            height: "60dp"
+            spacing: "10dp"
+            padding: "12dp", 0, "12dp", 0
+            MDLabel:
+                text: "Профиль"
+                font_style: "H5"
+                pos_hint: {"top": 1}
+                bold: True
+        MDBoxLayout:
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    MDBoxLayout:
+                        padding: "100dp", "50dp", 0, 0
+                        FitImage:
+                            id: avatar;
+                            halign: "center"
+                            radius: [50,]
+                            size_hint: None, None
+                            pos_hint: {"center_y": .85}
+                            source: "1.jpg"
+                            size: "150dp", "150dp"
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    padding: "1dp", "1dp", "1dp", "50dp"
+                    MDLabel:
+                        id: Fname
+                        text: "123"
+                        halign: "center"
+                        font_size: 20
+                        size_hint_y: None
+                        size: "20dp", "50dp"
+                    MDLabel:
+                        id: Sname
+                        halign: "center"
+                        text: "123"
+                        font_size: 20
+                        size_hint_y: None
+                        size: "20dp", "50dp"
+                    MDLabel:
+                        id: Group
+                        halign: "center"
+                        text: "2323"
+                        font_size: 20
+                        size_hint_y: None
+                        size: "20dp", "50dp"
+
+                MDBoxLayout:
+                    padding: "130dp", 0, 0, "40dp"
+                    MDRoundFlatButton:
+                        text: "Написать"
+                        font_size: 12
+                        pos_hint: {"center_x": 0.5}
+                        on_press: 
+                            app.pisat(root.ids.Fname.text, root.ids.Sname.text, root.ids.Group.text)
+
+        MDBoxLayout:
+            pos_hint: {"bot":1}
+            size_hint_y: .1
+            height: "60dp"
+            spacing: "15dp"
+            padding: "60dp", 0, "12dp", "28dp"
+            MDIconButton:
+                icon: "newspaper"
+                pos_hint: {"center_y": .5,"center_x": .2}
+                on_release: app.root.current = "news"
+                    
+            MDIconButton:
+                icon: "menu"
+                size_hint: None, None
+                pos_hint: {"center_y": .5,"center_x": .4}
+                on_release: app.root.current = "menu"
+                    
+            MDIconButton:
+                icon: "chat"
+                pos_hint: {"center_y": .5,"center_x": .6}
+                on_release: app.root.current = "chats"
+                        
+            MDIconButton:
+                icon: "account"
+                pos_hint: {"center_y": .5,"center_x": .8}
+                on_release: app.root.current = "profile"
+
+
+
+
+
+<Chats>:
+    name: "chats"
+    BoxLayout:
+        orientation: 'vertical'
+        MDBoxLayout:
+            pos_hint: {"top":1}
+            size_hint_y: None
+            height: "60dp"
+            spacing: "10dp"
+            padding: "12dp", 0, "12dp", 0
+            MDLabel:
+                text: "Сообщения"
+                font_style: "H5"
+                pos_hint: {"top": 1}
+                bold: True
+
+        MDBoxLayout:
+            size_hint_y: .05
+            padding: "10dp"
+            pos_hint: {"center_y":.84}
+
+            CustomTextInput:
+                hint_text: "Поиск"
+        MDBoxLayout:
+            size_hint_y: .6
+            pos_hint: {"center_y":.4}
+
+            ScrollView:
+                MDList:
+                    TwoLineAvatarIconListItem:
+                        text: "Тестовый профиль"
+                        secondary_text: "hello"
+                        spacing: "5dp"
+                        bg_color: 1,1,1,1
+                        IconLeftWidget:
+                            RoundIcon:
+                                source: "1.jpg"
+                                size: "50dp", "50dp"
+
+        MDBoxLayout:
+            pos_hint: {"bot":1}
+            size_hint_y: .1
+            height: "60dp"
+            spacing: "15dp"
+            padding: "60dp", 0, "12dp", 0
+            MDIconButton:
+                icon: "newspaper"
+                pos_hint: {"center_y": .5,"center_x": .2}
+                on_release: app.root.current = "news"
+                    
+            MDIconButton:
+                icon: "menu"
+                size_hint: None, None
+                pos_hint: {"center_y": .5,"center_x": .4}
+                on_release: app.root.current = "menu"
+                    
+            MDIconButton:
+                icon: "chat"
+                pos_hint: {"center_y": .5,"center_x": .6}
+                on_release: app.root.current = "chats"
+                        
+            MDIconButton:
+                icon: "account"
+                pos_hint: {"center_y": .5,"center_x": .8}
+                on_release: app.root.current = "profile"
+
+
+
+
+
+
+<Profile>:
+    name: "profile"
+    BoxLayout:
+        orientation: 'vertical'
+        MDBoxLayout:
+            pos_hint: {"top":1}
+            size_hint_y: None
+            height: "60dp"
+            spacing: "10dp"
+            padding: "12dp", 0, "12dp", 0
+            MDLabel:
+                text: "Профиль"
+                font_style: "H5"
+                pos_hint: {"top": 1}
+                bold: True
+        MDBoxLayout:
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    MDBoxLayout:
+                        padding: "100dp", "50dp", 0, 0
+                        FitImage:
+                            id: avatar;
+                            halign: "center"
+                            radius: [50,]
+                            size_hint: None, None
+                            pos_hint: {"center_y": .85}
+                            source: "1.jpg"
+                            size: "150dp", "150dp"
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    padding: "1dp", "1dp", "1dp", "50dp"
+                    MDLabel:
+                        id: Fname
+                        text: "123"
+                        halign: "center"
+                        font_size: 20
+                        size_hint_y: None
+                        size: "20dp", "50dp"
+                    MDLabel:
+                        id: Sname
+                        halign: "center"
+                        text: "123"
+                        font_size: 20
+                        size_hint_y: None
+                        size: "20dp", "50dp"
+                    MDLabel:
+                        id: Group
+                        halign: "center"
+                        text: "2323"
+                        font_size: 20
+                        size_hint_y: None
+                        size: "20dp", "50dp"
+
+                MDBoxLayout:
+                    padding: "130dp", 0, 0, "40dp"
+                    MDRoundFlatButton:
+                        text: "Изменить"
+                        font_size: 12
+                        pos_hint: {"center_x": 0.5}
+                        on_press: 
+                            app.izmprof(root.ids.Fname.text, root.ids.Sname.text, root.ids.Group.text)
+
+        MDBoxLayout:
+            pos_hint: {"bot":1}
+            size_hint_y: .1
+            height: "60dp"
+            spacing: "15dp"
+            padding: "60dp", 0, "12dp", "28dp"
+            MDIconButton:
+                icon: "newspaper"
+                pos_hint: {"center_y": .5,"center_x": .2}
+                on_release: app.root.current = "news"
+                    
+            MDIconButton:
+                icon: "menu"
+                size_hint: None, None
+                pos_hint: {"center_y": .5,"center_x": .4}
+                on_release: app.root.current = "menu"
+                    
+            MDIconButton:
+                icon: "chat"
+                pos_hint: {"center_y": .5,"center_x": .6}
+                on_release: app.root.current = "chats"
+                        
+            MDIconButton:
+                icon: "account"
+                pos_hint: {"center_y": .5,"center_x": .8}
+                on_release: app.root.current = "profile"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<CustomTextInput@TextInput>:
+    background_normal: f"{images_path}transparent.png"
+    background_active: self.background_normal
+    foreground_color: 0,0,0,.5
+    hint_text_color: app.theme_cls.disabled_hint_text_color
+    padding: "8dp", "12dp","8dp", 0
+    cursor_color: 0,0,0, .2
+    size_hint_y: None
+    height: "38dp"
+    canvas.after:
+        Color:
+            rgba: 0,0, 0.005, 0.07
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [8,]
+<RoundIcon>:
+    mipmap: True
+    size_hint: None, None
+    size: "60dp", "60dp"
+    radius: [25,]
+    on_release: print("profile clicked")
+
+<SearchUserResult>:
+    on_release: app.root.current = "searchprofsucsess"
+    ImageLeftWidget:
+        source: "1.jpg"
+    ImageRightWidget:
+        text: "1"
